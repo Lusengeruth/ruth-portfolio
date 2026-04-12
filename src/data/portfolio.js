@@ -92,7 +92,7 @@ export const projects = [
   },
   {
     id:          3,
-    category:    'data',
+    category:    'frontend',
     title:       'Analytics Dashboard',
     description: 'An interactive data analytics dashboard with dynamic charts and KPI tracking using Chart.js.',
     tags:        ['React 18', 'Chart.js', 'Vite', 'CSS'],
