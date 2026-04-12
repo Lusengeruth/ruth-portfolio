@@ -11,21 +11,17 @@ export default function About() {
         </h2>
 
         <div className="flex flex-col md:flex-row">
-
-          {/* Bio */}
           <div className="md:w-2/3 mb-10 md:mb-0 md:pr-12">
             {personal.bio.map((paragraph, i) => (
               <p key={i} className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                 {paragraph}
               </p>
             ))}
-
             <div className="flex flex-wrap gap-4 mt-8">
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, 'contact')}
-                className="bg-primary hover:bg-primary/90 text-white font-semibold
-                           py-2 px-6 rounded-lg transition duration-300"
+                className="bg-primary hover:bg-primary/90 text-white font-semibold py-2 px-6 rounded-lg transition duration-300"
               >
                 Hire Me
               </a>
@@ -43,14 +39,11 @@ export default function About() {
             </div>
           </div>
 
-          {/* Info card */}
           <div className="md:w-1/3">
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-md">
-
               <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                 <i className="fas fa-user-circle text-primary" /> Personal Info
               </h3>
-
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <i className="fas fa-map-marker-alt text-primary mt-1" />
@@ -63,10 +56,8 @@ export default function About() {
                   <i className="fas fa-phone text-primary mt-1" />
                   <div>
                     <span className="font-medium block">Phone</span>
-                    <a
-                      href={`tel:${personal.phone.replace(/\s/g, '')}`}
-                      className="text-gray-600 dark:text-gray-300 hover:text-primary transition"
-                    >
+                    <a href={`tel:${personal.phone.replace(/\s/g, '')}`}
+                      className="text-gray-600 dark:text-gray-300 hover:text-primary transition">
                       {personal.phone}
                     </a>
                   </div>
@@ -75,12 +66,8 @@ export default function About() {
                   <i className="fab fa-linkedin text-primary mt-1" />
                   <div>
                     <span className="font-medium block">LinkedIn</span>
-                    <a
-                      href={personal.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
+                    <a href={personal.linkedin} target="_blank" rel="noopener noreferrer"
+                      className="text-primary hover:underline">
                       {personal.linkedinLabel}
                     </a>
                   </div>
@@ -92,11 +79,10 @@ export default function About() {
               </h3>
               <div className="flex gap-3">
                 <SocialIcon href={personal.social.github}    icon="fa-github" />
-                <SocialIcon href={personal.social.twitter}   icon="fa-twitter" />
+                <SocialIcon href={personal.social.linkedin}  icon="fa-linkedin-in" />
+                <SocialIcon href={personal.social.facebook}  icon="fa-facebook-f" />
                 <SocialIcon href={personal.social.instagram} icon="fa-instagram" />
-                <SocialIcon href={personal.social.behance}   icon="fa-behance" />
               </div>
-
             </div>
           </div>
         </div>

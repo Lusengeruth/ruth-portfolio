@@ -3,7 +3,6 @@ import { personal } from '@/data/portfolio'
 import SocialIcon from '@/components/ui/SocialIcon'
 
 const INITIAL_FORM = { name: '', email: '', subject: '', message: '' }
-
 const FORMSPREE_URL = 'https://formspree.io/f/xdapwdrr'
 
 const contactItems = [
@@ -43,7 +42,7 @@ const inputCls = `
 
 export default function Contact() {
   const [form, setForm]     = useState(INITIAL_FORM)
-  const [status, setStatus] = useState(null) // null | 'sending' | 'success' | 'error'
+  const [status, setStatus] = useState(null)
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -52,31 +51,21 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     const { name, email, message } = form
     if (!name.trim() || !email.trim() || !message.trim()) {
       setStatus('error')
       return
     }
-
     setStatus('sending')
-
     try {
       const res = await fetch(FORMSPREE_URL, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body:    JSON.stringify(form),
       })
-
-      if (res.ok) {
-        setForm(INITIAL_FORM)
-        setStatus('success')
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
+      if (res.ok) { setForm(INITIAL_FORM); setStatus('success') }
+      else setStatus('error')
+    } catch { setStatus('error') }
   }
 
   return (
@@ -85,17 +74,13 @@ export default function Contact() {
         <h2 className="section-heading text-3xl md:text-4xl font-bold mb-12 text-center md:text-left">
           Get In Touch
         </h2>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-          {/* Left — info */}
           <div>
             <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-              I'm always interested in hearing about new projects and opportunities.
-              Feel free to reach out!
+              I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
             </p>
-
             <div className="space-y-6">
               {contactItems.map(({ icon, label, render }) => (
                 <div key={label} className="flex items-start gap-4">
@@ -109,22 +94,19 @@ export default function Contact() {
                 </div>
               ))}
             </div>
-
             <div className="mt-8">
               <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
               <div className="flex gap-3">
-                <SocialIcon href={personal.social.github}   icon="fa-github" />
-                <SocialIcon href={personal.social.linkedin} icon="fa-linkedin-in" />
-                <SocialIcon href={personal.social.twitter}  icon="fa-twitter" />
-                <SocialIcon href={personal.social.dribbble} icon="fa-dribbble" />
+                <SocialIcon href={personal.social.github}    icon="fa-github" />
+                <SocialIcon href={personal.social.linkedin}  icon="fa-linkedin-in" />
+                <SocialIcon href={personal.social.facebook}  icon="fa-facebook-f" />
+                <SocialIcon href={personal.social.instagram} icon="fa-instagram" />
               </div>
             </div>
           </div>
 
-          {/* Right — form */}
           <div>
             <h3 className="text-2xl font-semibold mb-6">Send Me a Message</h3>
-
             {status === 'success' && (
               <div className="mb-6 p-4 rounded-lg bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 text-sm font-medium">
                 ✅ Message sent! I'll get back to you soon.
@@ -135,7 +117,6 @@ export default function Contact() {
                 ⚠️ Please fill in your name, email, and message.
               </div>
             )}
-
             <form onSubmit={handleSubmit} noValidate className="space-y-5">
               {[
                 { id: 'name',    label: 'Your Name',  type: 'text',  placeholder: 'John Doe' },
@@ -144,52 +125,29 @@ export default function Contact() {
               ].map(({ id, label, type, placeholder }) => (
                 <div key={id}>
                   <label htmlFor={id} className="block text-sm font-medium mb-2">{label}</label>
-                  <input
-                    id={id}
-                    name={id}
-                    type={type}
-                    placeholder={placeholder}
-                    value={form[id]}
-                    onChange={handleChange}
-                    className={inputCls}
-                  />
+                  <input id={id} name={id} type={type} placeholder={placeholder}
+                    value={form[id]} onChange={handleChange} className={inputCls} />
                 </div>
               ))}
-
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
+                <textarea id="message" name="message" rows={4}
                   placeholder="Hello, I'd like to talk about..."
-                  value={form.message}
-                  onChange={handleChange}
-                  className={inputCls}
-                />
+                  value={form.message} onChange={handleChange} className={inputCls} />
               </div>
-
-              <button
-                type="submit"
-                disabled={status === 'sending'}
+              <button type="submit" disabled={status === 'sending'}
                 className="w-full py-3 px-6 bg-primary hover:bg-primary/90 text-white
                            font-semibold rounded-lg transition duration-300
                            flex items-center justify-center gap-2
-                           disabled:opacity-60 disabled:cursor-not-allowed"
-              >
+                           disabled:opacity-60 disabled:cursor-not-allowed">
                 {status === 'sending' ? (
-                  <>
-                    <i className="fas fa-spinner fa-spin" /> Sending...
-                  </>
+                  <><i className="fas fa-spinner fa-spin" /> Sending...</>
                 ) : (
-                  <>
-                    Send Message <i className="fas fa-paper-plane" />
-                  </>
+                  <>Send Message <i className="fas fa-paper-plane" /></>
                 )}
               </button>
             </form>
           </div>
-
         </div>
       </div>
     </section>
