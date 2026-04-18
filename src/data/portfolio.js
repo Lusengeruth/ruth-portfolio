@@ -111,7 +111,7 @@ export const projects = [
   },
   {
     id: 6, category: 'frontend',
-    title:       "Pharmacie de l'Espoir 💊",
+    title:       "Pharmacie de l'Espoir ",
     description: "Full-stack pharmacy management system built for a real pharmacy in Goma, DRC. Includes medicine inventory with low-stock alerts, automatic PDF invoices with 16% DRC VAT, Excel export, a REST API for partner clinics (CBCA, Heal Africa), and role-based access for admin, pharmacist, and cashier.",
     tags:        ['Laravel', 'PHP', 'MySQL', 'Bootstrap', 'REST API', 'DomPDF'],
     images:      [
