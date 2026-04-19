@@ -20,22 +20,13 @@ function SkillCard({ skill }) {
                        flex items-center justify-center mb-6 mx-auto md:mx-0`}>
         <i className={`fas ${skill.icon} text-3xl ${iconColor[skill.color]}`} />
       </div>
-
-      <h3 className="text-xl font-bold mb-4 text-center md:text-left">
-        {skill.title}
-      </h3>
-      <p className="text-gray-600 dark:text-gray-300 mb-6 text-center md:text-left">
+      <h3 className="text-xl font-bold mb-4 text-center md:text-left">{skill.title}</h3>
+      <p className="text-gray-600 dark:text-gray-300 mb-6 text-center md:text-left text-sm leading-relaxed">
         {skill.description}
       </p>
-
       <div className="space-y-3">
         {skill.items.map((item) => (
-          <SkillBar
-            key={item.name}
-            name={item.name}
-            level={item.level}
-            color={skill.color}
-          />
+          <SkillBar key={item.name} name={item.name} level={item.level} color={skill.color} />
         ))}
       </div>
     </div>
@@ -49,11 +40,8 @@ export default function Skills() {
         <h2 className="section-heading text-3xl md:text-4xl font-bold mb-12 text-center md:text-left">
           My Skills
         </h2>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skills.map((skill) => (
-            <SkillCard key={skill.id} skill={skill} />
-          ))}
+          {skills.map((skill) => <SkillCard key={skill.id} skill={skill} />)}
         </div>
       </div>
     </section>
