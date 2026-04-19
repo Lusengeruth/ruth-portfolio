@@ -18,7 +18,7 @@ export default function Footer() {
               {personal.name}
             </a>
             <p className="text-gray-600 dark:text-gray-400 mt-1">
-              Frontend &amp; Mobile Developer
+              Frontend & Fullstack Developer · Data Analyst
             </p>
           </div>
 
